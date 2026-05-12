@@ -1,0 +1,192 @@
+{
+  "name": "Dog",
+  "type": "object",
+  "properties": {
+    "naam": {
+      "type": "string",
+      "description": "Naam van de hond"
+    },
+    "ras": {
+      "type": "string",
+      "description": "Ras van de hond"
+    },
+    "geboortejaar": {
+      "type": "integer",
+      "description": "Geboortejaar"
+    },
+    "geslacht": {
+      "type": "string",
+      "enum": [
+        "mannelijk",
+        "vrouwelijk"
+      ],
+      "description": "Geslacht"
+    },
+    "gecastreerd": {
+      "type": "boolean",
+      "default": false,
+      "description": "Is de hond gecastreerd/gesteriliseerd"
+    },
+    "foto_url": {
+      "type": "string",
+      "description": "URL naar foto van de hond"
+    },
+    "start_weight_kg": {
+      "type": "number",
+      "description": "Startgewicht bij intake in kg (read-only na eerste opslag)"
+    },
+    "huidige_voeding": {
+      "type": "string",
+      "description": "Huidige voeding van de hond"
+    },
+    "hoeveelheid_voeding": {
+      "type": "string",
+      "description": "Hoeveelheid voeding per dag"
+    },
+    "bijvoeding": {
+      "type": "string",
+      "description": "Bijvoeding en snacks"
+    },
+    "aantal_voedingen": {
+      "type": "integer",
+      "description": "Aantal keer per dag voeren"
+    },
+    "eetgedrag": {
+      "type": "string",
+      "enum": [
+        "rustig",
+        "schrokker",
+        "kieskeurig"
+      ],
+      "description": "Eetgedrag van de hond"
+    },
+    "allergie\u00ebn": {
+      "type": "string",
+      "description": "Bekende allergie\u00ebn"
+    },
+    "medicatie": {
+      "type": "string",
+      "description": "Huidige medicatie"
+    },
+    "supplementen": {
+      "type": "string",
+      "description": "Huidige supplementen"
+    },
+    "andere_gezondheidsproblemen": {
+      "type": "string",
+      "description": "Andere gezondheidsproblemen zoals stoelgangproblemen, winderigheid, etc."
+    },
+    "huid_en_vacht": {
+      "type": "string",
+      "description": "Problemen met huid en vacht: jeuk, kale plekken, schilfers, roodheid"
+    },
+    "dagelijkse_activiteit": {
+      "type": "string",
+      "description": "Dagelijkse activiteit en beweging"
+    },
+    "ongewenst_gedrag": {
+      "type": "string",
+      "description": "Ongewenst gedrag"
+    },
+    "gras_eten": {
+      "type": "string",
+      "enum": [
+        "vaak",
+        "soms",
+        "zelden_of_nooit"
+      ],
+      "description": "Hoe vaak eet de hond gras"
+    },
+    "ontlasting_samenvatting": {
+      "type": "string",
+      "description": "Samenvatting van ontlasting"
+    },
+    "karakter": {
+      "type": "string",
+      "description": "Karakter van de hond"
+    },
+    "aanvullingen": {
+      "type": "string",
+      "description": "Aanvullende informatie"
+    },
+    "eerste_advies": {
+      "type": "string",
+      "description": "Eerste voedingsadvies gegeven tijdens intake sessie (HTML/Markdown)"
+    },
+    "status_tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "overgewicht",
+          "ondergewicht",
+          "allergie\u00ebn",
+          "huidproblemen",
+          "spijsverteringsproblemen",
+          "gedragsproblemen"
+        ]
+      },
+      "description": "Status tags"
+    },
+    "baasje_naam": {
+      "type": "string",
+      "description": "Naam van de eigenaar"
+    },
+    "baasje_email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email van de eigenaar"
+    },
+    "baasje_telefoon": {
+      "type": "string",
+      "description": "Telefoonnummer van de eigenaar"
+    },
+    "baasje_postcode": {
+      "type": "string",
+      "description": "Postcode van de eigenaar"
+    },
+    "baasje_plaats": {
+      "type": "string",
+      "description": "Woonplaats van de eigenaar"
+    },
+    "gastpas_wachtwoord": {
+      "type": "string",
+      "description": "Wachtwoord voor gastpas toegang"
+    },
+    "gastpas_slug": {
+      "type": "string",
+      "description": "Unieke slug voor gastpas URL"
+    },
+    "visualisaties": {
+      "type": "object",
+      "properties": {
+        "gewicht_grafiek": {
+          "type": "boolean",
+          "default": true
+        },
+        "symptoom_radar": {
+          "type": "boolean",
+          "default": false
+        },
+        "doelen_progressie": {
+          "type": "boolean",
+          "default": false
+        },
+        "stoelgang_trend": {
+          "type": "boolean",
+          "default": false
+        },
+        "jeuk_trend": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "description": "Welke visualisaties zijn actief voor dit profiel"
+    }
+  },
+  "required": [
+    "naam",
+    "baasje_naam",
+    "baasje_email"
+  ]
+}

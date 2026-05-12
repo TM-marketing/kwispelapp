@@ -1,0 +1,39 @@
+{
+  "name": "OwnerReport",
+  "type": "object",
+  "properties": {
+    "dog_id": {
+      "type": "string",
+      "description": "ID van de hond"
+    },
+    "datum": {
+      "type": "string",
+      "format": "date",
+      "description": "Datum van de rapportage"
+    },
+    "stoelgang_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 7,
+      "description": "Bristol stoelgang score"
+    },
+    "jeuk_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10,
+      "description": "Jeuk score"
+    },
+    "gedrag_notities": {
+      "type": "string",
+      "description": "Notities over gedrag"
+    },
+    "foto_url": {
+      "type": "string",
+      "description": "URL naar foto (optioneel)"
+    }
+  },
+  "required": [
+    "dog_id",
+    "datum"
+  ]
+}

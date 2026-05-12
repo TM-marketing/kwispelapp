@@ -1,0 +1,49 @@
+{
+  "name": "WeightMeasurement",
+  "type": "object",
+  "properties": {
+    "dog_id": {
+      "type": "string",
+      "description": "ID van de hond"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "ID van de sessie (indien gekoppeld)"
+    },
+    "datum": {
+      "type": "string",
+      "format": "date",
+      "description": "Datum van de meting"
+    },
+    "gewicht_kg": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Gewicht in kilogram"
+    },
+    "bron": {
+      "type": "string",
+      "enum": [
+        "intake",
+        "expert",
+        "owner",
+        "scale_sync"
+      ],
+      "default": "expert",
+      "description": "Wie heeft de meting gedaan"
+    },
+    "verified_by_expert": {
+      "type": "boolean",
+      "default": false,
+      "description": "Is deze meting geverifieerd door een expert"
+    },
+    "opmerking": {
+      "type": "string",
+      "description": "Opmerking bij de meting"
+    }
+  },
+  "required": [
+    "dog_id",
+    "datum",
+    "gewicht_kg"
+  ]
+}

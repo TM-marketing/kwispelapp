@@ -1,0 +1,142 @@
+{
+  "name": "Session",
+  "type": "object",
+  "properties": {
+    "dog_id": {
+      "type": "string",
+      "description": "ID van de hond"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "intake",
+        "opvolging"
+      ],
+      "default": "opvolging",
+      "description": "Type sessie (doel_activatie niet meer nodig)"
+    },
+    "datum": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Datum en tijd van de sessie"
+    },
+    "locatie": {
+      "type": "string",
+      "enum": [
+        "winkel",
+        "telefoon",
+        "video",
+        "thuisbezoek"
+      ],
+      "default": "winkel",
+      "description": "Locatie van de sessie"
+    },
+    "gewicht_notitie": {
+      "type": "string",
+      "description": "Notitie bij gewichtsmeting (gewicht zelf is in WeightMeasurement)"
+    },
+    "symptoom_scores": {
+      "type": "object",
+      "properties": {
+        "jeuk": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "roodheid": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "schilfers": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "stoelgang": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "gedrag": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "energie": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        }
+      }
+    },
+    "voeding_huidige": {
+      "type": "string",
+      "description": "Huidige voeding"
+    },
+    "voeding_aanpassingen": {
+      "type": "string",
+      "description": "Aanpassingen in voeding"
+    },
+    "supplementen": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "naam": {
+            "type": "string"
+          },
+          "dosering": {
+            "type": "string"
+          },
+          "doel": {
+            "type": "string"
+          }
+        }
+      },
+      "maxItems": 3
+    },
+    "huid_en_vacht_opmerking": {
+      "type": "string",
+      "description": "Observatie huid en vacht tijdens deze sessie"
+    },
+    "andere_gezondheidsproblemen_opmerking": {
+      "type": "string",
+      "description": "Observatie andere gezondheidsproblemen tijdens deze sessie"
+    },
+    "algemene_notities": {
+      "type": "string",
+      "description": "Algemene notities van de sessie"
+    },
+    "evaluatie_vorig_advies": {
+      "type": "string",
+      "description": "Evaluatie van het vorige advies"
+    },
+    "nieuw_advies": {
+      "type": "string",
+      "description": "Nieuw advies gegeven tijdens deze sessie"
+    },
+    "volgende_afspraak": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Datum volgende afspraak"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "final"
+      ],
+      "default": "draft",
+      "description": "Status van de sessie"
+    },
+    "expert_naam": {
+      "type": "string",
+      "description": "Naam van de expert die de sessie heeft gedaan"
+    }
+  },
+  "required": [
+    "dog_id",
+    "datum"
+  ]
+}

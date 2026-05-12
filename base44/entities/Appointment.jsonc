@@ -1,0 +1,54 @@
+{
+  "name": "Appointment",
+  "type": "object",
+  "properties": {
+    "dog_id": {
+      "type": "string",
+      "description": "ID van de hond"
+    },
+    "datum_tijd": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Datum en tijd van de afspraak"
+    },
+    "duur_minuten": {
+      "type": "integer",
+      "default": 60,
+      "description": "Duur in minuten"
+    },
+    "locatie": {
+      "type": "string",
+      "enum": [
+        "winkel",
+        "telefoon",
+        "video",
+        "thuisbezoek"
+      ],
+      "default": "winkel",
+      "description": "Locatie"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "gepland",
+        "geannuleerd",
+        "voltooid"
+      ],
+      "default": "gepland",
+      "description": "Status van de afspraak"
+    },
+    "herinnering_email": {
+      "type": "boolean",
+      "default": true,
+      "description": "Email herinnering versturen"
+    },
+    "notitie": {
+      "type": "string",
+      "description": "Notitie bij de afspraak"
+    }
+  },
+  "required": [
+    "dog_id",
+    "datum_tijd"
+  ]
+}

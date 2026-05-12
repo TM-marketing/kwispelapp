@@ -1,0 +1,83 @@
+{
+  "name": "Goal",
+  "type": "object",
+  "properties": {
+    "dog_id": {
+      "type": "string",
+      "description": "ID van de hond"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "symptoom",
+        "gewicht"
+      ],
+      "description": "Type doel"
+    },
+    "symptom_key": {
+      "type": "string",
+      "enum": [
+        "jeuk",
+        "roodheid",
+        "schilfers",
+        "stoelgang",
+        "gedrag",
+        "energie"
+      ],
+      "description": "Specifieke symptoom key, indien type='symptoom'"
+    },
+    "doel_omschrijving": {
+      "type": "string",
+      "description": "Automatisch gegenereerde of handmatige omschrijving van het doel"
+    },
+    "start_waarde": {
+      "type": "number",
+      "description": "Initi\u00eble waarde (slider score of gewicht) bij het aanmaken van het doel"
+    },
+    "streef_waarde": {
+      "type": "number",
+      "description": "De gewenste eindwaarde voor het doel"
+    },
+    "start_datum": {
+      "type": "string",
+      "format": "date",
+      "description": "Startdatum"
+    },
+    "created_in_session_id": {
+      "type": "string",
+      "description": "ID van de sessie waarin het doel is aangemaakt"
+    },
+    "afgerond_datum": {
+      "type": "string",
+      "format": "date",
+      "description": "Datum waarop het doel afgerond is"
+    },
+    "consecutive_success_count": {
+      "type": "integer",
+      "default": 0,
+      "description": "Aantal opeenvolgende sessies waarin target behaald is"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "actief",
+        "afgerond",
+        "gepauzeerd"
+      ],
+      "default": "actief",
+      "description": "Status van het doel"
+    },
+    "notitie": {
+      "type": "string",
+      "description": "Notitie bij het doel"
+    }
+  },
+  "required": [
+    "dog_id",
+    "type",
+    "doel_omschrijving",
+    "start_waarde",
+    "streef_waarde",
+    "start_datum"
+  ]
+}

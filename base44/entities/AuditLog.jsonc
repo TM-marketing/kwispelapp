@@ -1,0 +1,43 @@
+{
+  "name": "AuditLog",
+  "type": "object",
+  "properties": {
+    "entity_type": {
+      "type": "string",
+      "description": "Type entiteit (Dog, Session, Goal, WeightMeasurement, etc.)"
+    },
+    "entity_id": {
+      "type": "string",
+      "description": "ID van de gewijzigde entiteit"
+    },
+    "actor_email": {
+      "type": "string",
+      "description": "Email van de gebruiker die de actie uitvoerde"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "created",
+        "updated",
+        "deleted"
+      ],
+      "description": "Type actie"
+    },
+    "diff": {
+      "type": "object",
+      "description": "JSON object met wijzigingen (voor/na)"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Tijdstip van de actie"
+    }
+  },
+  "required": [
+    "entity_type",
+    "entity_id",
+    "actor_email",
+    "action",
+    "timestamp"
+  ]
+}
