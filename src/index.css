@@ -84,5 +84,19 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Poppins', 'Nunito Sans', -apple-system, sans-serif;
   }
+}
+
+:root {
+  --primary-blue: #1D3C87;
+  --primary-pink: #F7C9D2;
+  --bg-white: #FFFFFF;
+  --bg-light: #F5F5F5;
+}
+
+.kwiek-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: var(--primary-blue);
 }
