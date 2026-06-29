@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
@@ -8,7 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { Plus, Search, PawPrint, Calendar, TrendingUp, AlertCircle, Filter, CheckCircle } from "lucide-react";
+import { Plus, Search, PawPrint, Calendar, TrendingUp, AlertCircle, Filter, CheckCircle, Download } from "lucide-react";
+import { exportDogsCSV } from "@/functions/exportDogsCSV";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Select,
@@ -21,6 +21,28 @@ import {
 export default function Dashboard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterTag, setFilterTag] = useState("all");
+  const [exporting, setExporting] = useState(false);
+
+  const handleExportCSV = async () => {
+    setExporting(true);
+    try {
+      const response = await exportDogsCSV({});
+      const blob = new Blob([response.data], { type: 'text/csv;charset=utf-8;' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `honden-export-${new Date().toISOString().slice(0, 10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Export failed:', error);
+      alert('Exporteren mislukt. Probeer opnieuw.');
+    } finally {
+      setExporting(false);
+    }
+  };
 
   // FIX: Verwijder initialData en gebruik proper loading state
   const { data: dogs = [], isLoading: dogsLoading } = useQuery({
@@ -85,6 +107,16 @@ export default function Dashboard() {
           <p className="text-gray-600 mt-1">Welkom terug! Hier is een overzicht van je honden.</p>
         </div>
         <div className="flex gap-3">
+          <Button
+            variant="outline"
+            onClick={handleExportCSV}
+            disabled={exporting || dogsLoading}
+            className="rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2"
+            style={{ borderColor: 'var(--primary-blue)', color: 'var(--primary-blue)' }}
+          >
+            <Download className="w-5 h-5 mr-2" />
+            {exporting ? 'Exporteren...' : 'Export CSV'}
+          </Button>
           <Link to={createPageUrl("NieuweAfspraak")}>
             <Button variant="outline" className="rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2"
                     style={{ borderColor: 'var(--primary-blue)', color: 'var(--primary-blue)' }}>
